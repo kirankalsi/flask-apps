@@ -1,0 +1,16 @@
+<html>
+<body>
+<h1>USERS</h1>
+{% block body %}
+
+{% for user in users %}
+
+{% if 'b' in user %}
+<p>{{ user }}</p>
+{% endif %}
+
+{% endfor %}
+
+{% endblock body %}
+</body>
+</html>
