@@ -4,7 +4,7 @@ from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__) # Declare Flask object
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:1234@35.197.224.61/flask_db' # Set the connection string to connect to a database
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' # Set the connection string to connect to a database
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False 
 db = SQLAlchemy(app) # Declare SQLAlchemy object
 
