@@ -10,9 +10,9 @@ class BasicForm(FlaskForm):
     first_name = StringField('First Name')
     last_name = StringField('Last Name')
     age = IntegerField('Age')
-    DOB = DateField()
-    weight = DecimalField()
-    gender = SelectField('Gender', choices=[('Male'), ('Female')])
+    DOB = DateField('Date of Birth', format='%d/%m/%y')
+    weight = DecimalField('Weight', places=2)
+    gender = SelectField('Gender', choices=[('m', 'Male'), ('f', 'Female')])
     submit = SubmitField('Add Account')
 
 @app.route('/', methods=['GET', 'POST'])
@@ -28,7 +28,7 @@ def register():
         if len(first_name) == 0 or len(last_name) == 0:
             error = "Please supply both first and last name"
         else:
-            return 'Thank you ' + str(first_name) + ' ' + str(last_name)
+            return f'Thank you {first_name} {last_name}'
 
     return render_template('home.html', form=form, message=error)
 
