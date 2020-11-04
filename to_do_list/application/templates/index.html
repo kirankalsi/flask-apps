@@ -1,20 +1,11 @@
-<html>
-<body>
-<h1>To Do List</h1>
-
-{% for task in task_list %}
-
 <p>
 {{ task.id }} <br>
 {{ task.task }} <br>
 {% if task.is_complete == True %}
-&#9989
+Complete
 {% else %}
 Incomplete
 {% endif %}
 </p>
 
 {% endfor %}
-
-</body>
-</html>
