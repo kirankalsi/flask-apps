@@ -1,0 +1,15 @@
+<h1>Add a task to do</h1>
+
+<form method='POST' action=''>
+	{{ form.hidden_tag() }}
+	{{ form.task.label }} {{ form.task }}
+	{% if form.task.errors %}
+	<div class='error'>
+		{% for error in form.task.errors %}
+			<span>{{ error }}</span>
+		{% endfor %}
+	</div>
+	{% endif %}
+	<br>
+	{{ form.submit }}
+</form>
