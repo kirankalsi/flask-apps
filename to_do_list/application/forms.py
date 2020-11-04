@@ -15,10 +15,10 @@ class SameTaskCheck:
                 raise ValidationError(self.message)
 
 class TaskForm(FlaskForm):
-    task = StringField('Enter your task to do:',
+    task = StringField('Task:',
                 validators=[
                     DataRequired(),
                     SameTaskCheck(message='That task already exists')
                 ]
             )
-    submit = SubmitField('Add task to task list')
+    submit = SubmitField('Add to list')

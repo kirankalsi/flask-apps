@@ -1,11 +1,18 @@
+{% extends 'layout.html' %}
+{% block body_content %}
+
+{% for task in task_list %}
+
 <p>
 {{ task.id }} <br>
 {{ task.task }} <br>
 {% if task.is_complete == True %}
-Complete
+&#9989
 {% else %}
 Incomplete
 {% endif %}
 </p>
 
 {% endfor %}
+
+{% endblock body_content %}

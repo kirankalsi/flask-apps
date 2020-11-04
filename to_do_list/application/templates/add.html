@@ -1,4 +1,7 @@
-<h1>Add a task to do</h1>
+{% extends 'layout.html' %}
+{% block body_content %}
+
+<h2>Add a task to do</h2>
 
 <form method='POST' action=''>
 	{{ form.hidden_tag() }}
@@ -13,3 +16,5 @@
 	<br>
 	{{ form.submit }}
 </form>
+
+{% endblock body_content %}

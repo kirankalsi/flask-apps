@@ -7,7 +7,7 @@ from application.forms import TaskForm
 @app.route('/')
 def home():
     task_list = Tasks.query.all()
-    return render_template('layout.html', task_list=task_list)
+    return render_template('index.html', task_list=task_list)
 
 @app.route('/add', methods=['GET','POST'])
 def add():
