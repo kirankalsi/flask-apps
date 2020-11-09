@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, SubmitField
+from wtforms import StringField, SubmitField, SelectField
 from wtforms.validators import DataRequired, Length, ValidationError
 
 from application.models import Tasks
@@ -22,3 +22,13 @@ class TaskForm(FlaskForm):
                 ]
             )
     submit = SubmitField('Add to list')
+
+class OrderForm(FlaskForm):
+    order = SelectField('Sort By',
+            choices=[('new','Most Recent'),
+                    ('old','Oldest'),
+                    ('completed','Completed'),
+                    ('incompleted','Incompleted')
+                ]
+            )
+    submit = SubmitField('Sort')

@@ -1,6 +1,20 @@
 {% extends 'layout.html' %}
 {% block body_content %}
 
+<form method='POST' action='{{ url_for('home') }}'>
+	{{ form.order.label }} {{ form.order }}
+	<br>
+	{{ form.submit }}
+</form>
+
+{% if totals['total'] == 0 %}
+<h3>Add some Tasks</h3>
+{% elif totals['number_completed'] == totals['total'] %}
+<h3>Good Job!</h3>
+{% elif totals['number_completed'] < totals['total'] - 3 %}
+<h3>You're falling behind :(</h3>
+{% endif %}
+
 {% for task in task_list %}
 
 {{ task.id }} <br>
