@@ -1,4 +1,4 @@
-from flask import render_template, redirect, url_for
+from flask import render_template, redirect, url_for, request
 
 from application import app, db
 from application.models import Tasks
@@ -33,12 +33,17 @@ def incomplete(task_id):
     db.session.commit()
     return redirect(url_for('home'))
 
-@app.route('/update/<task>')
-def update(task):
-    first_task = Tasks.query.first()
-    first_task.task = task
-    db.session.commit()
-    return redirect(url_for('home'))
+@app.route('/update/<int:task_id>', methods=['GET', 'POST'])
+def update(task_id):
+    form = TaskForm()
+    task_to_update = Tasks.query.get(task_id)
+    if form.validate_on_submit():
+        task_to_update.task = form.task.data
+        db.session.commit()
+        return redirect(url_for('home'))
+    elif request.method == 'GET':
+        form.task.data = task_to_update.task
+    return render_template('update.html', form=form)
 
 @app.route('/delete/<int:task_id>')
 def delete(task_id):

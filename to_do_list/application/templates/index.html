@@ -3,7 +3,6 @@
 
 {% for task in task_list %}
 
-<p>
 {{ task.id }} <br>
 {{ task.task }} <br>
 {% if task.is_complete == True %}
@@ -11,8 +10,26 @@
 {% else %}
 Incomplete
 {% endif %}
-</p>
 
+<br>
+
+{% if task.is_complete %}
+<form action='{{ url_for('incomplete', task_id=task.id) }}'>
+	<button>Incomplete</button>
+</form>
+{% else %}
+<form action='{{ url_for('complete', task_id=task.id) }}'>
+	<button>Complete</button>
+</form>
+{% endif %}
+
+<form action='{{ url_for('update', task_id=task.id) }}'>
+	<button>Update</button>
+</form>
+<form action='{{ url_for('delete', task_id=task.id) }}'>
+	<button>Delete</button>
+</form>
+<br>
 {% endfor %}
 
 {% endblock body_content %}
